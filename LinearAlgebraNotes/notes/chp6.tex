@@ -1,0 +1,239 @@
+
+
+\chapter{ Euclidean空间 }
+
+\section{ 内积 }
+
+\begin{definition}[内积]
+    具有对称性和正定性的双线性型为内积.
+\end{definition}
+
+\begin{example}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 称$\mathbb{R}^n$上的$\defmap{f}{\mathbb{R}^n\times \mathbb{R}^n}{\mathbb{R}^n}{X,Y}{\sum_{i=1}^nx_iy_i}$为标准内积.
+        \item $\mathbb{R}^3$上的点积是内积.
+        \item $\defmap{f}{V\times V}{\mathbb{R}}{(A,B)}{tr(A'B)}$是内积.
+        \item $\defmap{f}{C[a,b]\times C[a,b]}{\mathbb{R}}{f,g}{\int_a^bfgdx}$是一个内积.
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[内积空间]
+    若$(\ ,\ )$是$V$上的内积, 则称$(V,\ (\ ,\ ))$是一个内积空间.
+\end{definition}
+
+%%5.16 谭老师
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 若某一向量与该空间内任意向量做内积都为零, 则该向量为零向量.
+        \item 若$\vectorset{\alpha}{n}$, 两两之间内积都为零(正交), 则其线性无关.
+        \item (Caucthy-Bunyakawski不等式): $\alpha,\ \beta \in V$, 则$(\alpha,\ \beta)^2\le (\alpha,\ \alpha)(\beta,\ \beta)$.
+        \item (Schmidt正交化): $\vectorset{\alpha}{n}$线性无关, 
+        则$\beta{_k}=\alpha{_k}-\sum_{i=1}^{k-1}\frac{(\alpha{_k},\ \beta{_i})}{(\beta{_i},\ \beta{_i})}\beta{_i},\ \beta{_1}=\alpha{_1}$. 两两正交且与原向量组等价.
+    \end{enumerate}
+\end{property}
+
+\begin{example}
+    由Caucthy不等式得到$(\sum_{i=1}^n\frac{x_i^2}{n})^2\le \frac{\sum_{i=1}^nx_i^2}{n}$成立.\par
+    特别地, 基本不等式成立.
+\end{example}
+
+\begin{definition}[内积的几何性概念]
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 定义某空间中向量的长度$\Vert \alpha \Vert=\sqrt{(\alpha,\ \alpha)}$.
+        \item 三角不等式$\Vert \alpha \Vert-\Vert\beta \Vert \le \Vert \alpha+\beta\Vert \le \Vert\alpha\Vert + \Vert\beta\Vert$.
+        \item 称$\frac{\alpha}{\Vert \alpha \Vert}$为$\alpha$的单位化, 长度为一的向量为单位向量.
+        \item 设两向量$\alpha,\ \beta$都不为零, 则$\vert\frac{(\alpha,\ \beta)}{\Vert\alpha\Vert\cdot\Vert\beta\Vert}\vert\le 1$, 存在唯一的$\theta\in [0,\ \pi]$使得$cos\theta$与之相等, 定义$\theta$为两向量之间的夹角.
+        \item 若两向量之间的夹角为$\frac{\pi}{2}$, 即称两向量垂直.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[度量映射]
+    设$V_1,\ V_2$是两个线性空间, 分别两个内积为$(\ ,\ )_1,\ (\ ,\ )_2$, 若$f\in Hom(V_1,\ V_2)$, 且任意$V_1$中的向量, 
+    $(f(\alpha),\ f(\beta))_2=(\alpha,\ \beta)_1$, 即线性映射保内积, 则称该线性映射为度量映射.
+\end{definition}
+
+\begin{lemma}
+    线性映射是单射是线性映射为度量映射的必要条件.
+\end{lemma}
+
+\begin{definition}[等距]
+    若度量映射是双射, 则称其为等距映射, 两个线性空间存在等距映射, 则称两个线性空间等距.
+\end{definition}
+
+\section{ 欧氏空间 }
+
+\begin{definition}[欧氏空间]
+    $n$维的内积空间称为一个$n$维欧氏空间.
+\end{definition}
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 欧氏空间具有标准正交基.
+        \item 若欧氏空间上一个向量组标准正交, 则其可以扩充为一个标正基.
+        \item 两个欧式空间等距, 当且仅当其维数相等.
+        \item $W$是欧氏空间$V$的一个子空间, 则$W^{\perp}$也是其子空间, $V=W\oplus W^{\perp}$.
+    \end{enumerate}
+\end{property}
+
+\begin{example}
+    欧氏空间上的两个向量在标正基下的坐标为$X,\ Y$, 则其内积为$X'Y$.
+\end{example}
+
+%%5.20谭老师
+
+\begin{definition}[空间的正交]
+    内积空间的两子空间中的任意两向量内积为零, 则称两子空间是正交的.
+\end{definition}
+
+\begin{example}
+    例如Fourier级数中的向量组$1,\ sinx,\ sin2x,\ \cdots,\ cosx,\ cos2x,\ \cdots$
+\end{example}
+
+\begin{definition}[正交投影]
+    若$W$是内积空间$V$的子空间, 有$V=W\oplus W^{\perp}$, 对$\forall \alpha \in V$, 有$\alpha = \alpha{_1}+\alpha{_2}$, 
+    分别属于$W$和$W^{\perp}$且唯一, 则称$\alpha{_1}$为$\alpha$在$W$上的正交投影.
+\end{definition}
+
+\begin{theorem}[正交投影]
+    由上, $\alpha{_1}$是$\alpha$在$W$上的正交投影, 当且仅当, $\forall \beta \in W$, 有$\Vert \alpha - \alpha{_1}\Vert\le \Vert \alpha-\beta\Vert$.
+\end{theorem}
+
+\begin{theorem}[最小二乘法]
+    设$y=k_1x_1+\cdots+k_nx_n$, 若有$m$组数据$a_{i1},\ \cdots,\ a_{in},\ b_i,\ 1 \le i \le m$, 则
+    使得$\sum_{i=1}^m(b_i-\sum_{j=1}^nk_ia_{ij})$最小的$X=(\vectorset{k}{n})'$是线性方程组$A'AX=A'\beta$的解, 称为最小二乘解.
+\end{theorem}
+
+\begin{definition}[内积的度量阵]
+    $V$是一个欧氏空间, 其内积在某一基下具有度量阵.
+\end{definition}
+
+\begin{example}
+    $\vectorset{\alpha}{n}$是标正基, 当且仅当其内积在其上的度量阵为单位阵.
+\end{example}
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 度量阵是单位阵.
+        \item 度量阵可逆.
+        \item 在不同基上的度量阵合同.
+    \end{enumerate}
+\end{property}
+
+\begin{definition}[合同]
+    两个方阵$\ainmnf{A,\ B}$合同, 即存在可逆的方阵$\ainmnf{P}$使得$B=P'AP$.
+\end{definition}
+
+%%5.22谭老师
+
+\section{ 正交变换 }
+
+\begin{definition}[正交变换]
+    若一欧氏空间, 有$\mathbb{A}\in EndV$, 若$(\mathbb{A}\alpha,\ \mathbb{A}\beta)=(\alpha,\ \beta)$, 则称其是一个正交变换.\par
+    记欧式空间$V$上的所有正交变换的空间为$O(V)$.
+\end{definition}
+
+\begin{example}
+    恒等变换是正交变换.
+\end{example}
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 一个正交变换是双射, 可逆, 且其逆也是正交变换.
+        \item 若$W$是正交变换的不变子空间, 则其正交补也是其不变子空间.
+        \item 两个正交变换的积也是正交变化, $O(V)$是一个一般线性群$GL(V)$($V$上可逆的线性变换作成的群)的子群.
+        \item 一个线性变换是正交变换, 当且仅当其将一个标正基映射到一个标正基.
+    \end{enumerate}
+\end{property}
+
+\begin{example}
+    若两个$n$维欧氏空间, 则其$O(V_1),\ O(V_2)$同构.
+\end{example}
+
+\begin{definition}[反射变换]
+    对$\forall \alpha$, $V$是一欧氏空间, 有$\defmap{r_{\alpha}}{V}{V}{\gamma}{\gamma-\frac{2(\alpha,\ \gamma)}{(\alpha,\ \alpha)}\alpha}$. 称
+    为由$\alpha$确定的反射变换.
+\end{definition}
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 反射变换是线性变换.
+        \item 反射变换是正交变换.
+        \item 反射变换的特征值为$1,\ -1$, 且几何重数分别为$n-1,\ 1$, 则反射变换可对角化.
+    \end{enumerate}
+\end{property}
+
+\begin{example}
+    $\defmap{T}{\matrixfield{n}{F}}{\matrixfield{n}{F}}{A}{3A+5A'}$, 则由定义可以得到其两个特征值$-2,\ 8$, 且只有两个特征值.
+\end{example}
+
+\begin{example}
+    chapter6, 例62, Dieudonne定理.
+\end{example}
+
+\begin{definition}[正交阵]
+    $\ainmnf{A}$, 且$A'A=E_n$, 则称其是一个$n$阶正交阵.
+\end{definition}
+
+\begin{theorem}[正交阵的充要条件]
+    $A\in M_n(\mathbb{R})\in O(V)$, 当且仅当其在标正基下的矩阵为正交阵.\par
+    记所有正交阵组成的集合为$On(\mathbb{R})$.
+\end{theorem}
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 正交阵可逆, 且其逆矩阵也是正交阵.
+        \item 正交阵的积仍是正交阵, 正交阵作成的集合是一个群.
+        \item $n$维欧式空间的$O(V)$与$On(\mathbb{R})$之间有双射.
+        \item 若$A\in O_m(\mathbb{R}),\ B\in O_n(\mathbb{R})$, 则$diag\{A,\ B\}\in O_{m+n}(\mathbb{R})$.
+        \item 正交阵的行列式为$1$或$-1$. 记$SO_n(\mathbb{R})=\defset{A\in M_n(\mathbb{R})}{A'A=E_n,\ \vert A\vert=1}$为标准正交群.
+        \item 正交阵的任意复特征值在单位元上.
+        \item 定义线性变换$A: \alpha\mapsto A\alpha$, 则$A$是正交阵, 当且仅当其是正交变换.
+        \item $A$是正交阵, 当且仅当其列/行向量组是$\mathbb{R}^n$的标正基.
+        \item 正交阵一定相似于$\begin{pmatrix}
+            \lambda{_1} &      &           &             &             & & & & \\
+                        &\ddots&           &             &             & & & & \\
+                        &      &\lambda{_t}&             &             & & & & \\
+                        &      &           & cos\theta{_1}&sin\theta{_1}& & & & \\
+                        &      &           &-sin\theta{_1}&cos\theta{_1}&      & & & \\
+                        &      &           &              &             &\ddots& & & \\
+                        &      &           &              &             &      &cos\theta{_s}&sin\theta{_s}& \\
+                        &      &           &              &             &      &-sin\theta{_s}&cos\theta{_s}&
+        \end{pmatrix}\in \matrixfield{n}{R}$, 其中, $\lambda{_i},\ 1\le i \le t$为$1$或$-1$.
+    \end{enumerate}
+\end{property}
+
+\section{ 对称变换 }
+
+\begin{definition}[对称变换]
+    欧氏空间上一线性变换$\mathbb{A}$, 使得对任意属于欧氏空间的两向量有$(\mathbb{A}\alpha,\ \beta)=(\alpha,\ \mathbb{A}\beta)$, 则
+    称此线性变换为对称变换.\par
+    记欧式空间上所有对称变换组成的集合记为$\mathscr{S}(V)$.
+\end{definition}
+
+\begin{theorem}[对称变换的充要条件]
+    $\mathbb{A}$是对称变换, 当且仅当其在标正基下的矩阵为对称阵.
+\end{theorem}
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 实对称阵的特征值全为实数.
+        \item 若$A$是实对称阵, 则若$W$是$A-$子空间, 则$W^{\perp}$也是$A-$子空间.
+        \item 若$A$是实对称阵, 若$\vectorset{\lambda}{s}$是其互不相同的特征值, 则其相应的特征子空间为直和且相互正交.
+    \end{enumerate}
+\end{property}
+
+\begin{theorem}[实对称阵可对角化]
+    若$A$是实对称阵, 则$A$在$\mathbb{R}$上一定可以对角化. 且存在正交阵$T$使得$T^{-1}AT=T'AT$为对角阵.\par
+    即, 存在一个标正基, 使得$\mathbb{A}$是欧氏空间$V$上的正交变换, 其在此标正基上的矩阵为对角阵.\par
+    即, $V$可以分解为$\mathbb{A}$特征子空间的直和.
+\end{theorem}

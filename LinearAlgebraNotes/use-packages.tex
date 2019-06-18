@@ -1,0 +1,47 @@
+%\usepackage{minitoc}
+
+% 使用 geometry 宏包定制页面版式
+% pdf 电子文档版式
+\usepackage[a4paper,left=3.5cm,right=3.5cm, bottom=3.5cm,top=3.5cm]{geometry}
+% 印刷版式，左右页的内外边距不同，以抵消装订线对页边空白的影响。
+%\usepackage[a4paper,inner=4cm,outer=2.5cm, bottom=3.5cm,top=3.5cm]{geometry}
+
+\usepackage{enumitem}
+% \usepackage{emptypage}
+% 定制目录样式的宏包
+\usepackage{etoc}
+
+% 定制日期时间格式的宏包
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}
+
+% 数学必备宏包
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% 定理和证明环境
+\usepackage{amsthm}
+
+\usepackage{makecell}
+
+% 插图宏包，提供插图命令 \includegraphics
+\usepackage{graphicx}
+
+% 好看的向量箭头符号，命令是 \vv
+\usepackage{esvect}
+
+% 数学花体，命令是\mathscr
+\usepackage{mathrsfs}
+
+% 数学粗体，用于向量或矩阵等，命令是\bm
+\usepackage{bm}
+
+% 改善表格排版质量的宏包
+\usepackage{booktabs}
+
+% 使目录和各种引用具有超链接效果
+\usepackage[colorlinks,linkcolor=black,CJKbookmarks=true,bookmarksnumbered]{hyperref}
+
+% 定制插图和表格的标题的宏包
+\usepackage[font=small,labelfont=bf,labelsep=space]{caption}
+

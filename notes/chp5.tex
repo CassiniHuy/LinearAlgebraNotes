@@ -1,0 +1,611 @@
+\chapter{ 线性变换 }
+
+\section{ 线性变换 }
+
+ \begin{definition}[线性变换]
+     线性映射中, 两个线性空间是同一个线性空间的线性映射称为线性变换.
+     记为$\mathbb{A}, \mathbb{B}$等表示线性变换, 此时$Hom(V,V)=End(V)$.
+ \end{definition}
+
+\begin{statement}
+    $EndV$是$\mathbb{F}$上的一个线性子空间.
+\end{statement}
+
+\begin{statement}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 对乘法封闭, 不满足交换律.
+        \item $\lambda id_V$与所有$EndV$中元素都可关于乘法交换.
+        \item 乘法满足结合律.
+        \item $\forall \ f, g\in \mathbb{F}[x], \ \mathbb{A}, \mathbb{B}\in EndV\ $有$f(\mathbb{A})g(\mathbb{B})=g(\mathbb{B})f(\mathbb{A})$
+    \end{enumerate}
+\end{statement}
+
+\begin{example}
+    设$\mathbb{A}\in EndV, \ C(\mathbb{A})=\{\mathbb{B}\in EndV|\mathbb{A}\mathbb{B}=\mathbb{B}\mathbb{A}\}$, $C(\mathbb{A})$是$EndV$的子空间, 求其维数?
+\end{example}
+
+\section{ 零化和极小多项式 }
+
+\begin{definition}[零化多项式]
+    多项式$f(x)$使得$f(\mathbb{A})=0\in EndV$, 则称$f(x)$为$\mathbb{A}$的零化多项式.
+\end{definition}
+
+\begin{lemma}
+    若$dimV=n, \ \mathbb{A}\in EndV$, 则$\mathbb{A}$有非零零化多项式.
+\end{lemma}
+
+\begin{example}
+    $\frac{d}{dx}\in End(C[a,b])$没有非零零化多项式.
+\end{example}
+
+\begin{lemma}[极小多项式的唯一性]
+    设$m1. \ m1$是$\mathbb{A}$的次数最小的首一的零化多项式, 则$m1=m2$.
+\end{lemma}
+
+\begin{definition}[极小多项式]
+    设$\mathbb{A}$的次数最低的首一的零化多项式为$\mathbb{A}$的极小多项式.
+\end{definition}
+
+\begin{example}
+    设$\mathbb{A}\in EndV, \ dimV=n<\infty, \ \mathbb{F}[\mathbb{A}]\triangleq \{\ \mathbb{B}\in EndV\ |\ \exists \ f(x)\in \mathbb{F}[x], \ \mathbb{B}=f(\mathbb{A})\}$, 则$\mathbb{F}[\mathbb{A}]$一定是$EndV$的子空间, 求其维数.
+\end{example}
+
+\begin{theorem}
+    $EndV\cong M_n(\mathbb{F}), \ dimEndV=dimM_n(\mathbb{F})=n^2$.
+\end{theorem}
+
+\begin{inference}
+    $\forall \ \mathbb{A}\in EndV, \ \exists \ 0\ne f(x)\in\mathbb{F}[x]$使得$f(\mathbb{A})=0\in EndV$
+\end{inference}
+
+\section{ 矩阵的相似 }
+
+\begin{lemma}
+    若有:
+    \[\begin{pmatrix}
+        \mathbb{A}\alpha{_1} & \mathbb{A}\alpha{_2} & \cdots & \mathbb{A}\alpha{_n}
+    \end{pmatrix}=\begin{pmatrix}
+        \alpha{_1} & \alpha{_2} & \cdots & \alpha{_n}
+    \end{pmatrix}A\]
+    \[\begin{pmatrix}
+        \mathbb{A}\beta{_1} & \mathbb{A}\beta{_2} & \cdots & \mathbb{A}\beta{_n}
+    \end{pmatrix}=\begin{pmatrix}
+        \beta{_1} & \beta{_2} & \cdots & \beta{_n}
+    \end{pmatrix}B\]
+    \[\begin{pmatrix}
+        \beta{_1} & \beta{_2} & \cdots & \beta{_n}
+    \end{pmatrix}=\begin{pmatrix}
+        \alpha{_1} & \alpha{_2} & \cdots & \alpha{_n}
+    \end{pmatrix}C\]
+    则有$B=C^{-1}AC$.
+\end{lemma}
+
+\begin{definition}[相似]
+    称上述两个矩阵之间的关系为相似, 即存在可逆的矩阵$C$, 使得$B=C^{-1}AC$.
+\end{definition}
+
+\begin{statement}
+    相似关系是等价关系.
+\end{statement}
+
+\begin{example}
+    相似于一数量阵的矩阵只有其本身.
+\end{example}
+
+\begin{example}
+    $A$与$B$相似, 等且仅当$XA=BX$矩阵方程有可逆的解, 等且仅当$f(t_1, \cdots, t_r)=det(t_1X_1+\cdots+t_rX_r)\in \mathbb{F}[t_1, \cdots, t_r]$是一个非零函数($X_i$是解空间的基).
+\end{example}
+
+\begin{statement}
+    相似关系不依赖于数域, 由上可以看出.
+\end{statement}
+
+\begin{property}
+    相似关系的必要条件:
+    \begin{enumerate}[itemindent=1em]
+        \item $det(A)=det(B)$.
+        \item $r(A)=r(B)$.
+        \item $tr(A)=tr(B)$.
+        \item $A, B$的极小多项式相同.
+    \end{enumerate}
+\end{property}
+
+\begin{lemma}
+    \[A\sim B\Longrightarrow A^k\sim B^k\Longrightarrow f(A)\sim f(B)\].
+\end{lemma}
+
+\section{ 特征值和特征向量 }
+
+\begin{lemma}
+    $A\in M_n(\mathbb{F}), \ D=diag\{\lambda{_1}, \cdots, \lambda{_n}\},\ A\sim D\Longrightarrow A\xi{_i}=\lambda{_i}\xi{_i}, \ 1\le i \le n$, 其中每个$\xi{_i}$线性无关.
+\end{lemma}
+
+\begin{definition}[特征向量]
+    上述引理中, 称$\lambda$为$A$的特征值, $\xi$是$A$的属于$\lambda$的特征向量.
+\end{definition}
+
+\begin{definition}[可对角化]
+    若$A\in M_n(\mathbb{F}), \ \mathbb{F}\subseteq \mathbb{K}$, 在数域$\mathbb{K}$上可以相似于一个对角阵, 则称$A$在$\mathbb{K}$上可以对角化.
+\end{definition}
+
+\begin{inference}
+    $\matrixfield{n}{F}$上的矩阵可以对角化, 当且仅当其有$n$个线性无关的特征向量.
+\end{inference}
+
+\begin{definition}[特征子空间]
+    $A\in\matrixfield{n}{F}$, 若$\vectorset{\lambda}{s}$是其互不相同的特征值, 则称$V_{\lambda}=\defset{\xi\in \mathbb{F}^n}{A\xi=\lambda \xi}$为矩阵的属于该特征值的特征子空间.
+\end{definition}
+
+\begin{lemma}
+    $A\in\matrixfield{n}{F}$, 若$\vectorset{\lambda}{s}$是其互不相同的特征值, 则该$s$个特征子空间是直和.
+\end{lemma}
+
+\begin{inference}
+    若有对角元都相同的上三角阵$\ainmnf{A}$, 则其不可对角化.
+\end{inference}
+
+\begin{lemma}
+    $\ainmnf{A}$, 则$\lambda$是其特征值(不为0)当且仅当$r(A-\lambda E)<n$或$\det(A-\lambda E)=0$.
+\end{lemma}
+
+\section{ 特征多项式 }
+
+\begin{definition}[特征多项式]
+    称$f(\lambda)=det(\lambda E-A)\in \mathbb{F}[x]$为$\ainmnf{A}$的特征多项式.\par
+    则有$\lambda$是其特征值, 当且仅当是其特征多项式的根.
+\end{definition}
+
+\begin{inference}
+    $\ainmnf{A}$是对角元都不相同的上三角阵, 则其可对角化.
+\end{inference}
+
+\begin{inference}
+    两个矩阵相似, 则其特征多项式相同.
+\end{inference}
+
+\begin{inference}
+    若$\ainmnf{A}$, 则$det(A)=\prod_{i=1}^n\lambda{_i}$, $tr(A)=\sum_{i=1}^n\lambda{_i}$.
+\end{inference}
+
+\begin{inference}
+    $\ainmnf{A}$是上三角阵, 若$\vectorset{\lambda}{n}$是其对角元, 则$tr(A^k)=\sum_{i=1}^n\lambda{_i}^k$.
+\end{inference}
+
+\begin{definition}[几何重数和代数重数]
+    $\lambda$是$\ainmnf{A}$的一个特征值, 则称其在特征多项式中的重数为其代数重数, 其特征子空间的维数为几何重数.
+\end{definition}
+
+\begin{theorem}[实数对称阵的特征值]
+    实数域上的对称阵的特征值一定是实数.
+\end{theorem}
+
+\begin{example}
+    对角化算法:\par
+    \begin{enumerate}[itemindent=1em]
+        \item 由特征多项式判断其特征值是否在数域$\mathbb{F}$上, 否则不可对角化.
+        \item 算出每个特征子空间的基, 若维数之和小于$n$, 则其不可对角化.
+        \item 依次排列基和对应的特征值即为$C$和$D$.
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}
+    $\ainmnf{A},\ \mathbb{F}\subseteq \mathbb{K}$, 则$A$相似于一个上三角阵, 当且仅当其特征值都在$\mathbb{K}$上.
+\end{theorem}
+
+\begin{inference}
+    一个矩阵在复数域上一定相似于一个上三角阵.
+\end{inference}
+
+\begin{example}
+    $\ainmnf{A},\ A^n=0$, 当且仅当$A$只有零特征值, 当且仅当其特征多项式为$x^n$.
+\end{example}
+
+\begin{example}
+    若$\ainmnf{A},\ A$相似于一个对角元为$\vectorset{\lambda}{n}$的上三角阵, $g\in \mathbb{F}[x]$, 有$det(g(A))=\prod_{i=1}^n g(\lambda{_i})$.
+\end{example}
+
+\begin{statement}
+    $\ainmnf{A}$, 则$A$一定有非零零化多项式.
+\end{statement}
+
+\begin{theorem}[Hamilton-Caylay定理]
+    矩阵的特征多项式即为其零化多项式.
+\end{theorem}
+
+\begin{inference}
+    $\ainmnf{A}$, 则其极小多项式整除其特征多项式, 且其复根相同.
+\end{inference}
+
+\begin{inference}
+    若$\ainmnf{A,\ B}$, 且其特征多项式有$f_A,\ f_B\in \mathbb{F}[x]$互素, 则矩阵方程$AX=XB$只有零解.
+\end{inference}
+
+\begin{inference}
+    若有$\ainmnf{A,\ B},\ A=diag\{\vectorset{A}{s}\}, A_i\in \matrixfield{r_i}{F},\ AB=BA$, 则$B=diag\{\vectorset{B}{s}\}, B_i\in \matrixfield{r_i}{F}$.\par
+    特别地, 若$A$是对角阵, 则$B$也是对角阵, 且有$dim\defset{B\in \matrixfield{n}{F}}{AB=BA}=n$.
+\end{inference}
+
+\begin{example}
+    $\ainmnf{A}$, 其特征多项式为$f_A$, 若$f_A,\ g\in\mathbb{F}[x]$, 则$g(A)$可逆, 当且仅当$(f_A,\ g)=1$.
+\end{example}
+
+\begin{example}
+    由$A$的特征多项式可得, $A^{-1}$仍为其多项式.
+\end{example}
+
+\begin{example}
+    $\ainmnf{A}$, 则其复特征值$\lambda$的代数重数大于等于其几何重数.\par
+    且, $A$可对角化, 当且仅当其代数重数和几何重数相等.
+\end{example}
+
+
+\section{ 不变子空间 }
+
+\begin{definition}[不变子空间]
+    若$W$是$\mathbb{F}^n$的子空间, 若有$\forall \alpha \in W,\ A\alpha \in W$, 则称$W$是$A$的不变子空间($A$-子空间).\par
+    即$A$在$\mathbb{F}$上可准对角化, 当且仅当其可以分解为其不变子空间的直和.
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}[itemindent=1em]
+        \item $\ainmnf{A}$, 则有$\mathbb{F}^n,\ 0$是$A$的平凡$A$-子空间.
+        \item 其特征子空间是其一个不变子空间.
+        \item 特征子空间的和是一个不变子空间.
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    设$A\in M_n(\mathbb{R})$, 设$\lambda$是其一复特征值, 对应$\alpha$是其特征向量, 令$\xi{_1}=\alpha + \bar{\alpha},\ \xi{_2}=(\alpha-\bar{\alpha})i$.
+    则有$W=<\xi{_1}, \xi{_2}>$是$A$的一个不变子空间.\par
+    实数域上的方阵一定有二维的不变子空间.
+\end{example}
+
+\begin{example}
+    $A=\begin{pmatrix}
+        cos\theta & -sin\theta & 0\\
+        sin\theta & cos\theta  & 0\\
+        0         & 0          & 1\\
+    \end{pmatrix}$, 绕$z$轴旋转.
+\end{example}
+
+\begin{example}
+    $\ainmnf{A}$, 且$\vectorset{\lambda}{s}$是其互不相同的特征值, $V_{\lambda{_i}}$是其特征子空间, 设$W$是其不变子空间, 则有:\par
+    $W\cap(V_{\lambda{_1}}\oplus\cdots\oplus V_{\lambda{_s}})=(W\cap V_{\lambda{_1}})\oplus\cdots\oplus(W\cap V_{\lambda{_s}})$.\par
+    特别地, 若$A$可对角化, 则有:\par
+    $W=(W\cap V_{\lambda{_1}})\oplus\cdots\oplus (W\cap V_{\lambda{_s}})$.
+\end{example}
+
+\begin{definition}[线性变换的特征值等]
+    定义$\mathbb{A}\in EndV$的矩阵$A$的特征值, 特征向量, 特征子空间, 不变子空间, 特征多项式为$\mathbb{A}$的.
+\end{definition}
+
+\begin{example}
+    若$\mathbb{A}\in EndV$, 则$ker\mathbb{A},\ im(\mathbb{A})$是$\mathbb{A}$-子空间.
+\end{example}
+
+\begin{example}
+    $\ainmnf{A,B}$, 且$AB=BA$, 则$kerB$一定是$A$的特征子空间.\par
+    特别地, 对$\forall f(x)\in \mathbb{F}[x]$, $kerf(A)$是$A$-子空间.
+\end{example}
+
+\begin{example}
+    $\mathbb{F}[x]$上, $\frac{d}{dx}$只有一个特征值$0$, 且其特征子空间的维数为1.
+\end{example}
+
+%%%4.17
+\begin{definition}[限制]
+    设$V/\mathbb{F},\ \mathbb{A}\in EndV$, $W$是其一个不变子空间, 则称$\defmap{\mathbb{A}|_W}{W}{W}{\alpha}{\mathbb{A}\alpha}$是$\mathbb{A}$在$W$上的限制.
+\end{definition}
+
+\begin{example}
+    设$V_{\lambda}$是$\mathbb{A}$的一个特征子空间, 则有$\mathbb{A}|_{V_{\lambda}}=\lambda id_{V_{\lambda}}$.
+\end{example}
+
+\begin{example}
+    在准素分解定理中, 若$g=g_1\cdots g_s$, 且其两两互素, $g$非零为$\mathbb{A}$的一个零化多项式, $kerg_i(\mathbb{A})$是其一个不变子空间, 
+    则$g_i$是$\mathbb{B}_i=\mathbb{A}|_{kerg_i(\mathbb{A})}$的一个零化多项式.
+\end{example}
+
+\begin{example}
+    若$V/\mathbb{F},\ \mathbb{A},\mathbb{B}\in EndV$, 且$\mathbb{A}\mathbb{B}=\mathbb{B}\mathbb{A},\ dimV<\infty,\ \mathbb{F}=\mathbb{C}$,
+    则$\mathbb{A}$和$\mathbb{B}$有共同的特征向量.
+\end{example}
+
+\begin{example}
+    设$\ainmnf{A,B},\ AB=BA$, 则存在可逆的方阵$P\in M_n(\mathbb{C})$, 使得$P^{-1}AP,\ P^{-1}BP$同时为上三角阵.
+\end{example}
+
+\begin{example}
+    设$\ainmnf{A,B},\ AB=BA$, 且$B$幂零, 则$det(A+B)=det(A)$
+\end{example}
+
+\begin{statement}
+    极小多项式不依赖于数域(线性相关性不依赖于数域).
+\end{statement}
+
+\begin{lemma}
+    若$A$可以写成准对角阵$diag\{\vectorset{A}{s}\}$, 设$m(x)$是其极小多项式, $m_i(x)$是对角元位置上矩阵的极小多项式, 则
+    $m=[\vectorset{m}{s}]$.
+\end{lemma}
+
+\begin{inference}
+    若$A=diag\{\lambda{_1}E_{r_1},\cdots,\lambda{_s}E_{r_s}\},\ \vectorset{\lambda}{s}\in \mathbb{K}$, 则有
+    $A$在$\mathbb{K}$上可对角化, 当且仅当其极小多项式可以在$\mathbb{K}$上分解为互异(没有重根)的一次多项式乘积.
+\end{inference}
+
+\begin{example}
+    $r$阶Jordan块一定不可对角化.
+\end{example}
+
+\section{ $\lambda$-阵 }
+
+\begin{definition}[特征阵]
+    设$\ainmnf{A}$, $\lambda$为不定元, 称$\lambda E_n-A\in M_n(\mathbb{F}[\lambda])$为$A$的特征阵.\par
+    其中$M_n(\mathbb{F}[\lambda])$为所有$(a_{ij}(\lambda))_{n\times n},\ a_{ij}(\lambda)\in \mathbb{F}[x]$的集合.
+\end{definition}
+
+%%4/22
+
+\begin{definition}[$\lambda$阵的次数]
+    定义$max_{1\le i,j \le n}a_{ij}(\lambda)$为$A(\lambda)\in M_n(\mathbb{F}[\lambda])$为其次数, 约定在$A(\lambda)=0$时次数为$-\infty$.\par
+    一般地可以将$A(\lambda)$写成$A(\lambda)=\lambda{^m}A_m+\lambda{^{m-1}}A_{m-1}+\cdots+\lambda A_1+A_0,\ A_i\in \matrixfield{n}{F}$的样式.
+\end{definition}
+
+\begin{property}
+    $M_n(\mathbb{F}[\lambda])$上:\par
+    \begin{enumerate}[itemindent=1em]
+        \item $deg(A(\lambda)+B(\lambda))\le max\{degA(\lambda), degB(\lambda)\},\ deg(A(\lambda)B(\lambda))\le degA(\lambda)+degB(\lambda)$.
+        \item 是一个环, 是$\mathbb{F}[\lambda]$上的矩阵环.
+        \item $\mathbb{F}[x]$是一个交换环, 可以定义行列式, 满足行列式乘积定理、laplace定理.
+    \end{enumerate}
+\end{property}
+
+\begin{definition}[$\lambda$阵的可逆性]
+    若存在$B(\lambda)\in M_n(\mathbb{F}[\lambda])$使得$A(\lambda)B(\lambda)=B(\lambda)A(\lambda)=E$, 则称$A(\lambda)$可逆, $B(\lambda)$为其逆矩阵.
+\end{definition}
+
+\begin{theorem}[$\lambda$阵可逆的充要条件]
+    若$A(\lambda)\in M_n(\mathbb{F}[\lambda])$, 则$A(\lambda)$可逆, 当且仅当
+    $det(A(\lambda))\in \mathbb{F} \setminus \{0\}$.
+\end{theorem}
+
+\begin{example}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item $\lambda$阵的初等变换: 交换两行/列, 将某行/列的$u(\lambda)$倍加到另一行, 将某一行乘以一个非零常数.
+        \item 定义$E_n$经一次初等变换得到的矩阵称为初等$\lambda$阵.
+        \item 初等$\lambda$阵一定可逆, 且逆矩阵仍是初等$\lambda$阵.
+        \item 定理: 对$\lambda$阵做初等变换, 等价于对该$\lambda$阵乘以相应的初等$\lambda$阵.
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[$\lambda$阵的秩]
+    称$A(\lambda)$非零子式的最高阶数为其秩, 记为$r(A(\lambda))$.
+\end{definition}
+
+\begin{statement}
+    若$A(\lambda)$可逆, 则其秩为$n$, 反之不一定成立.
+\end{statement}
+
+\begin{definition}[$\lambda$阵的相抵]
+    设$A(\lambda),B(\lambda)\in M_n(\mathbb{F}[\lambda])$, 若存在可逆的$P(\lambda),Q(\lambda)$使得
+    $P(\lambda)A(\lambda)Q(\lambda)=B(\lambda)$, 则称$A(\lambda),B(\lambda)$相抵.\par
+    相抵是等价关系.
+\end{definition}
+
+\begin{lemma}
+    $A,B$相似, 当且仅当, 存在可逆的$R_1, R_2$使得$R_1(\lambda E-A)R_2=\lambda E - B$.
+\end{lemma}
+
+\begin{lemma}
+    $P(\lambda),Q(\lambda)\in M_n(\mathbb{F}[\lambda])$, 
+    则存在$H(\lambda),G(\lambda)\in M_n(\mathbb{F}[\lambda]),\ R_1, R_2\in \matrixfield{n}{F}$使得\par
+    $P(\lambda)=H(\lambda)(\lambda E-B)+R_1$\par
+    $Q(\lambda)=(\lambda E-B)G(\lambda)+R_2$.
+\end{lemma}
+
+\begin{theorem}[矩阵相似的充要条件]
+    若$A,B\in \matrixfield{n}{F}$, 则两矩阵相似, 当且仅当$\lambda E-A$与$\lambda E-B$相抵.
+\end{theorem}
+
+%%4/29 付老师
+
+\begin{lemma}
+    设$A(\lambda)=(a_{ij}(\lambda))_{m\times n}$, 且$a_11 \ne 0$若存在$a_{ij}(\lambda)$使得$a_{11}(\lambda)\nmid a_{ij}(\lambda)$, 
+    则$A(\lambda)$一定可以经有限步初等变换化为$B(\lambda)=(b_{ij}(\lambda))_{m\times n}$其中, $b_{11}(\lambda)$首一且$degb_{11}<dega_{11}$.
+\end{lemma}
+
+\begin{theorem}
+    设$A(\lambda)\in M_{m\times n}(\mathbb{F}[\lambda])$且非零, 则$A(\lambda)$一定相抵于:
+    $diag\{d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda),0,\cdots,0\}$, 且对角元首一, $d_i(\lambda)|d_{i+1}(\lambda), 1\le i \le r-1$.
+\end{theorem}
+
+\begin{inference}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item $A(\lambda)$可逆, 当且仅当其可以表示为有限个初等$\lambda$阵的乘积.
+        \item $A(\lambda),\ B(\lambda)$相抵, 当且仅当$A(\lambda)$可以经有限步初等变换化为$B(\lambda)$.
+    \end{enumerate}
+\end{inference}
+
+\section{ 行列式、不变、初等因子 }
+
+\begin{definition}[行列式因子]
+    设$A(\lambda)$是一个$\lambda$阵, 且$r(A(\lambda)>0)$, 对$1\le k \le n$, 其存在非零$k$阶子式, 
+    则称其所有$k$阶子式的最大公因式为其$k$级行列式因子, 记为$D_k(\lambda)=D_k(A(\lambda))$.
+\end{definition}
+
+\begin{lemma}
+    初等行/列变换不改变$\lambda -$阵的行列式因子.
+\end{lemma}
+
+\begin{inference}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 初等变换不改变$\lambda-$矩阵的秩.
+        \item 相抵的$\lambda-$阵具有相同的秩.
+    \end{enumerate}
+\end{inference}
+
+\begin{theorem}[行列式因子与不变因子]
+    若$A(\lambda)$相抵于$diag\{d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda),0,\cdots,0\}$, 且对角元首一, $d_i(\lambda)|d_{i+1}(\lambda), 1\le i \le r-1$,
+    则有:\par
+    \begin{enumerate}[itemindent=1em]
+        \item $d_1(\lambda)=D_1(\lambda),\ d_2(\lambda)=\frac{D_2(\lambda)}{D_1(\lambda)},\ \cdots,\ d_r(\lambda)=\frac{D_r(\lambda)}{D_{r-1}(\lambda)}$.
+        \item 若$A(\lambda)$相抵于$diag\{f_1(\lambda),f_2(\lambda),\cdots,f_r(\lambda),0,\cdots,0\}$, 则$f_i=d_i,\ 1\le i \le r$.(唯一性)
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[smith标准形]
+    称上定理中的矩阵为$A(\lambda)$的相抵标准形, 称$d_i(\lambda),\ 1\le i \le r$为其不变因子.
+\end{definition}
+
+\begin{inference}[$\lambda$阵相抵的充要条件]
+    两个$\lambda-$阵相抵, 当且仅当其各级行列式因子相同, 当且仅当其所有不变因子相同.
+\end{inference}
+
+\begin{definition}[行列式因子与不变因子]
+    称$\lambda E-A$的不变因子/行列式因子, 为$A$的不变因子/行列式因子.
+\end{definition}
+
+\begin{theorem}[矩阵相似的充要条件]
+    两个矩阵相似, 当且仅当其行列式因子相同, 当且仅当其不变因子相同.
+\end{theorem}
+
+\begin{example}
+    若$\ainmnf{A},\ f_A$是其特征多项式, $\vectorset{d}{r}$是其不变因子, 则\par
+    $f_A=d_1\cdots d_r$
+\end{example}
+
+\begin{inference}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item $\ainmnf{A}$, 则$A$与$A'$相似.
+        \item $\ainmnf{A,B},\ \mathbb{F}\subset \mathbb{K}$, 则$A,B$在$\mathbb{F}$上相似, 当且仅当其在$\mathbb{K}$上相似.
+    \end{enumerate}
+\end{inference}
+
+%%5.6 谭老师
+
+\begin{example}
+    $r$阶Jordan块$J_r(a)$的$D_1(\lambda)=\cdots=D_{r-1}(\lambda)=1,\ D_r(\lambda)=(\lambda-a)^r$.
+\end{example}
+
+\begin{example}
+    $A(\lambda)$可逆, 当且仅当其行列式为非零常数, 当且仅当$D_n(\lambda)=1$, 当且仅当$A(\lambda)$的标准形为$E_n$.
+\end{example}
+
+\begin{statement}
+    $A(\lambda)$不变因子的个数为$A(\lambda)$的秩.
+\end{statement}
+
+\begin{lemma}
+    $diag\{a_1(\lambda),\cdots,p(\lambda)^sa_i(\lambda),\cdots,p(\lambda)^ta_j(\lambda),\cdots,a_n(\lambda)\}$,\\
+    $diag\{a_1(\lambda),\cdots,p(\lambda)^ta_i(\lambda),\cdots,p(\lambda)^sa_j(\lambda),\cdots,a_n(\lambda)\}$相抵.
+\end{lemma}
+
+\begin{lemma}
+    设$A(\lambda)$相抵于$B(\lambda)=diag\{h_1(\lambda),\cdots,h_n(\lambda)\}$, 
+    设$h_i(\lambda)=p_1(\lambda)^{r_{i1}}\cdots p_s(\lambda)^{r_{is}}, 1\le i \le n$, 
+    且$r_{ij}\ge 0, 1\le j \le s$, 其中$p_j(\lambda)^{r_{ij}}$是$\mathbb{F}$上的素幂因子, $p_j(\lambda)$不可分解. 
+    作$s$行, 每行按照$p_i(\lambda)$的次数降幂排列, 每一列的乘积即为$A(\lambda)$和$B(\lambda)$的不变因子.
+\end{lemma}
+
+\begin{definition}[初等因子]
+    $A(\lambda)\in M_n(\mathbb{F}[\lambda])$, 且$r(A(\lambda))=n$, 把$A(\lambda)$的每个正次数的不变因子的数幂因子称为$A(\lambda)$的初等因子.
+\end{definition}
+
+\begin{inference}
+    $A(\lambda)$的不变因子的所有数幂因子构成$A(\lambda)$的初等因子.
+\end{inference}
+
+\begin{theorem}[矩阵相似的充要条件]
+    $\ainmnf{A,B}$相似当且仅当其在同一数域的初等因子相同.
+\end{theorem}
+
+\begin{example}
+    $A$的特征多项式等于其特征阵的初等因子的乘积.
+\end{example}
+
+\begin{definition}[正整数的划分]
+    设$n\in \mathbb{N}^+$, 则称$n=n_1+\cdots+n_k,\ n_i \ge 1,\ n_{i+1}\ge n_i,\ 1\le i \le n-1$为$n$的一个划分, 以$p(n)$表示划分的个数.
+\end{definition}
+
+\begin{inference}
+    设$\ainmnf{A}$, 其特征多项式$f_A=p_1(\lambda)^{s_1}\cdots p_t(\lambda)^{s_t}$, 则其初等因子和矩阵按照相似关系分类有$p(s_1)\cdots p(s_t)$种.
+\end{inference}
+
+\begin{theorem}[Jordan标准形]
+    若$A$的全部复特征值属于$\mathbb{F}$, 写出其初等因子, 按序排列, 构造准对角阵\par
+    $J=diag\{J_1(a_1),\cdots,J_{m_1}(a_1),\cdots,J_{1}(a_s),\cdots,J_{m_s}(a_s)\}$是$A$在$\mathbb{F}$上的Jordan标准形.\par
+    矩阵在某一数域上有Jordan标准形, 当且仅当其全部特征阵属于该数域.
+\end{theorem}
+
+\begin{example}
+    如何求矩阵在某一数域的Jordan标准形.\par
+    \begin{enumerate}[itemindent=1em]
+        \item 特征阵化为对角阵, 正次数对角元能否化为一次多相似的乘积, 否则无Jordan标准形.
+        \item 写出全部初等因子.
+        \item 写出Jordan标准形.
+    \end{enumerate}
+\end{example}
+
+%%5.13 谭老师
+
+\begin{example}
+    待定系数法求可逆矩阵$P$使得$P^{-1}AP=J$.
+\end{example}
+
+\begin{example}
+    矩阵的极小多项式等于其最后一个不变因子.
+\end{example}
+
+\begin{example}
+    $\ainmnf{A}$, 存在$k\in \mathbb{N}^+$, 使得$r(A^k)=r(A^{k+1}=\cdots)$
+\end{example}
+
+\begin{example}
+    设$\ainmnf{A}$, 若$A$在某数域上有Jordan标准形, 则其对角元为$a$的Jordan块的个数为$a$作为其特征值的几何重数.
+\end{example}
+
+\section{ 有理标准形 }
+
+\begin{definition}[友阵]
+    若$f(x)=\lambda{_n}+a_1\lambda{_{n-1}}+\cdots+a_{n-1}\lambda{_1}+a_n \in \mathbb{F}[\lambda]$, 
+    定义$R=\begin{pmatrix}
+        0 &        & & -a_n \\
+        1 & \ddots & & \vdots \\
+          & \ddots &0& -a_2 \\
+          &        &1& -a_1 \\
+    \end{pmatrix}$为其友阵.\par
+    注意到, $\vert \lambda E-R \vert = f(\lambda) = d_n(\lambda)$, 而其他初等因子为$1$.
+\end{definition}
+
+\begin{definition}[有理标准形]
+    设$A$的全部初等因子的友阵分别为$R_{11},\ \cdots,\ R_{1t_1},\ \cdots,\ R_{s1},\ \cdots,\ R_{st_s}$, 
+    则定义矩阵$diag\{R_{11},\ \cdots,\ R_{1t_1},\ \cdots,\ R_{s1},\ \cdots,\ R_{st_s}\}$为其有利标准形.\par
+    注意到其有利标准形与$A$有相同的初等因子, 因此他们相似.
+\end{definition}
+
+\begin{example}
+    若一个矩阵在某数域同时具有Jordan标准形, 则此Jordan标准形与其有利标准形相似.
+\end{example}
+
+\begin{example}
+    考虑$M_2(\mathbb{R})$上所有矩阵的相似情况.\par
+    设该空间上的矩阵$A$的特征多项式为$f(\lambda)=\lambda{^2}+a\lambda+b$.
+    \begin{enumerate}[itemindent=1em]
+        \item 若$a^2-4b>0$, 则其在实数域上相似于对角阵$diag\{\lambda{_1},\ \lambda{_2}\}$.
+        \item 若$a^2-4b=0$, 则其在实数域上的初等因子有两种情况, 相似于其Jordan标准形, 
+        可能相似于$diag\{\lambda{_0},\ \lambda{_0}\}$或是$\begin{pmatrix}
+            \lambda{_0} & 1\\
+            0           & \lambda{_0}
+        \end{pmatrix}$.
+        \item 若$a^2-4b<0$, 则其相似于其有利标准形$\begin{pmatrix}
+            0 & b\\
+            1 & -a
+        \end{pmatrix}$.
+    \end{enumerate}
+\end{example}
+

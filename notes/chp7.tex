@@ -1,0 +1,259 @@
+
+\chapter{ 线性型双线性型二次型 }
+
+\section{ 线性型 }
+
+\begin{definition}[线性型]
+    设$V/\mathbb{F}$, 则称$V^*\triangleq Hom(V, \mathbb{F})$为$V$上的一个线性型(线性函数). \par
+    称$V^*$为$V$的一个\emph{对偶空间}.
+\end{definition}
+
+\begin{example}
+    设$V$是一个内积空间, $f: \ V \to V^*, \ \alpha \mapsto f_{\alpha}, \ f_{\alpha}(\beta)=(\alpha, \beta), \ \forall \beta \in V$, $f$是一个线性型, 其为单射, 则有嵌入$V\to V^*$.
+\end{example}
+
+\begin{example}
+    映射$f: \ M_n(\mathbb{F}) \to \mathbb{F}, \ A \mapsto tr(A)$, 有$f\in V^*$.
+\end{example}
+
+\begin{definition}[对偶基]
+    由于$V \cong V^*$, $\alpha{_1}, \cdots, \alpha{_n}$是$V$的一个基, 取$V^*$的一个向量组$\alpha{_1^*}, \cdots, \alpha{_n^*}$, 其中$\alpha{_i^*}:\ \alpha{_j}\mapsto \delta{_{ij}}, \ 1 \le i,j \le n$.\par
+    将$\sum^n_{i=1}k_i\alpha{_i}$依次作用于$\alpha{_i}$, 则可以得出$\alpha{_1^*}, \cdots, \alpha{_n^*}$是$V^*$的一个基, 称其为$\alpha{_1}, \cdots, \alpha{_n}$的对偶基.
+\end{definition}
+
+\begin{example}
+    设映射关系$V_1\stackrel{f}{\to} V_2\stackrel{g}{\to} \mathbb{F}$, 定义映射: $f^*\in Hom(V_2^*, V_1^*), \ g \mapsto g\cdot f$.\par
+    证明其为线性映射, 求其关于$\beta{_1^*}, \cdots, \beta{_m^*}$和$\alpha{_1^*}, \cdots, \alpha{_n^*}$的矩阵.
+\end{example}
+
+\begin{statement}
+    设$f_1, \cdots, f_s \in V^*$, 则一定$\exists \alpha \in V$使得$f_i(\alpha)$互不相同.
+\end{statement}
+
+\begin{statement}
+    设$\alpha \in V$, 有$\forall f \in V^*,\ f(\alpha)=0$, 则一定有$\alpha = 0$.
+\end{statement}
+
+\begin{example}
+    记$V^{**}\triangleq(V^*)^*$, 对$\forall \alpha \in V$有线性映射$\alpha{^{**}}\in Hom(V^*, \mathbb{F}),\ f\mapsto f(\alpha)$.\par
+    有"自然的"线性映射$\rho \in Hom(V, V^{**}),\ \alpha \mapsto \alpha{^{**}}$, 且$\rho$是单射, 有嵌入$V\to V^{**}$.
+\end{example}
+
+\begin{theorem}[对偶定理]
+    $dimV=n<\infty$, $\rho$是同构映射, 即$V\cong V^{**}$.
+\end{theorem}
+
+\section{ 双线性型 }
+
+\begin{definition}[双线性型]
+    设$V/\mathbb{F}$, 若$f\in Hom(V\times V, \mathbb{F})$, 且$f$满足双线性性, 则称其为双线性型.\par
+    记$B(V)$是$V$上所有双线性型的集合.
+\end{definition}
+
+\begin{example}
+    内积是一个双线性型.
+\end{example}
+
+\begin{example}
+    对任意的$f\in Hom(V, V^*)$, 定义映射$\tilde{f}\in B(V):\ V\times V\to \mathbb{F},\ (\alpha, \beta)\mapsto f(\alpha)(\beta)$, 可以证明$\tilde{f}$是一个线性映射.\par
+    定义映射$\rho:\ Hom(V, V^*)\to B(V),\ f\mapsto \tilde{f}$, 可以证明其为线性映射且单射, 有嵌入$Hom(V,V^*) \to B(V)$
+\end{example}
+
+\begin{definition}[左右根]
+    若$f\in B(V)$, 则称$rad_Lf\triangleq\{\alpha\in V|f(\alpha, \beta)=0,\ \forall\ \beta \in V\}$, 称其为左根, 相应的有右根的定义, 他们都是$V$的子空间.\par
+    若有$f(\alpha, \beta)=f(\beta, \alpha),\ \forall\ \alpha, \beta \in V$, 则称$f$是\emph{对称的}, 记$\mathscr{S}(V)$为$V$的所有对称的双线性型的集合, 作为$B(V)$的子空间.\par
+    若有$rad_Lf=rad_Rf=0$, 则称$f$是\emph{非退化的}.
+\end{definition}
+
+\begin{example}
+    内积是对称的且是非退化的, 具有更强的正定性.
+\end{example}
+
+\begin{definition}[度量阵]
+    若有$V/\mathbb{F},\ dimV=n<\infty,\ f\in B(V)$, 取定其一个基$\alpha{_1},\cdots,\alpha{_n}$, 
+    则记$A=(f(\alpha{_i}, \alpha{_j}))_{n\times n},\ 1\le i,j\le n$为$f$在该基下的度量阵.
+\end{definition}
+
+\begin{statement}
+    在上述定义下(有限维情况下), 若有两向量$\alpha, \beta$的坐标分别是$X, Y$, 则有$f(\alpha, \beta)=X'AY$.\par
+    设$\alpha \in rad_Lf$, 则有$X'AY=0$的解空间的维数为$n$, 即$A'X=0$的解空间即为$rad_Lf$, 则$dimrad_Lf=n-r(A)$.\par
+    同理可以得到有限维时情况相同, 即$rad_Rf$为$AY=0$的解空间, $dimrad_Rf=n-r(A)$, 即左根和右根同构.\par
+    则有$f$非退化当且仅当$r(A)=n$即可逆.
+\end{statement}
+
+\begin{theorem}
+    定义映射:$\rho:\ B(V)\to M_n(\mathbb{F}),\ f\mapsto A$, 其中$A$为$f$在取定的一个基下的度量阵, 则有$\rho$是线性的, 单且满, 则有:\par
+    $B(V)\cong M_n(\mathbb{F})$
+\end{theorem}
+
+\begin{statement}
+    求一个线性空间的维数(已知):
+    \begin{enumerate}[itemindent=1em]
+        \item 找到其一个基
+        \item 将其同构于一个维数已知的线性空间
+        \item 使用维数公式
+    \end{enumerate}
+\end{statement}
+
+\begin{example}
+    由定理可以得到$dim\mathscr{S}(V)=\frac{n(n+1)}{2}$.
+\end{example}
+
+\begin{theorem}[双线性映射的秩]
+    设有$A,B\in M_n(\mathbb{F})$, 则$A,B$合同$\Longleftrightarrow$存在$n$维线性空间的双线性映射$f$使得$A,B$是其在不同基上的度量阵.\par
+    称$r(A)$为$f$的秩, 记为$rank(f)$.
+\end{theorem}
+
+\begin{theorem}[对称阵基本定理]
+    设$A\in M_n(\mathbb{F})$, 则有$A$是对称阵$\Longleftrightarrow$其在$\mathbb{F}$上合同于一个对角阵.\par
+    或者说: $dimV=n<\infty,\ f\in \mathscr{S}(V)$当且仅当其在某一个基上的度量阵是对角阵.
+\end{theorem}
+
+\begin{lemma}
+    若$0\ne f\in \mathscr{S}(V)$, 则一定存在$\alpha \in V$使得$f(\alpha,\alpha)\ne 0$.
+\end{lemma}
+
+\section{ 合同关系 }
+
+\begin{example}
+    合同关系依赖于数域.\par
+    例如$A=diag\{1,1\},\ B=diag\{2,-2\}$, 在$\mathbb{C}$上有:\par
+    \[\begin{pmatrix}
+        \frac{1}{\sqrt{2}} & 0\\
+        0 & \frac{1}{\sqrt{2}i}
+    \end{pmatrix}\begin{pmatrix}
+        2 & 0\\
+        0 & -2
+    \end{pmatrix}\begin{pmatrix}
+        \frac{1}{\sqrt{2}} & 0\\
+        0 & \frac{1}{\sqrt{2}i}
+    \end{pmatrix}=E_2\]\\
+    在$\mathbb{R}$上, 若有可逆的$C\in M_n{\mathbb{R}}$, 使得$B=C'AC$, 两边取行列式有$det(C)^2=-4$, 矛盾.
+\end{example}
+
+\begin{lemma}
+    对角阵$A=diag\{\vectorset{a}{n}\},\ B=diag\{\vectorsubset{a}{i}{n}\}$, 其中$\vectorset{i}{n}$是$1,\cdots,n$的排列, 则有$A$和$B$合同.
+\end{lemma}
+
+\begin{inference}
+    在$\mathbb{C}$上, 两对称阵合同当且仅当其秩相同, 其一定相似于$\begin{pmatrix}
+        E_r &\\
+         & 0
+    \end{pmatrix}$, 其中$r$是矩阵的秩.
+\end{inference}
+
+\begin{inference}
+    在$\mathbb{R}$上, 任意对称阵一定相似于$\begin{pmatrix}
+        E_p &     &\\
+            & E_q &\\
+            &     &0
+    \end{pmatrix}$, 其中$p+q$为矩阵的秩.
+\end{inference}
+
+\section{ 二次型 }
+
+\begin{definition}[二次型]
+    形如$f(\vectorset{x}{n})=b_{11}{x_1}^2+\cdots+b_{nn}{x_n}^2+\sum_{1\le i<j \le n}b_{ij}x_ix_j$, 其中系数数域某一数域, 称为二次型.\par
+    二次型都可以写成$X'AX$的形式.
+\end{definition}
+
+\begin{lemma}
+    二次型可以唯一写作$X'AX$的形式, 其中$A'=A$, 称$A$为$f$的矩阵.
+\end{lemma}
+
+\begin{example}
+    某数域上所有对称阵空间, 与所有对称双线性型组成的空间, 与所有二次型组成的空间同构.
+\end{example}
+
+\begin{definition}[二次型的标准型]
+    二次型只有平方项(其为标准型), 当且仅当其矩阵为对角阵.
+\end{definition}
+
+\begin{definition}[非退化的线性替换]
+    若$P$可逆, 则称$X=PY$是二次型$X'PX$的一个非退化的线性替换.
+\end{definition}
+
+\begin{definition}[二次型的等价]
+    存在非退化的线性替换从一个二次型到另一个二次型, 则称两个二次型等价.
+\end{definition}
+
+\begin{inference}
+    二次型$X'AX$和$Y'BY$等价, 当且仅当$A,\ B$合同.
+\end{inference}
+
+\begin{inference}
+    某一数域下的二次型一定等价于一标准型.
+\end{inference}
+
+\begin{inference}
+    在$\mathbb{C}$上的二次型一定等价于${y_1}^2+\cdots+{y_r}^2$.\par
+    在$\mathbb{R}$上的二次型一定等价于${y_1}^2+\cdots+{y_p}^2-{y_{p+1}^2-\cdots-{y_{p+q}}^2}$, 称为规范型.
+\end{inference}
+
+\begin{example}
+    如何求实数域对称阵的规范型?\par
+    \begin{enumerate}[itemindent=1em]
+        \item 配方法
+        \item 利用合同变换.
+        \item *利用正交变换.
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}[惯性定理]
+    在实数域上, 两对称阵合同, 当前仅当其$p,\ q$相同(正负惯性系数相同).
+\end{theorem}
+
+\begin{definition}[惯性指数]
+    $p,\ q$被一矩阵唯一地确定, 称$p$为其正惯性指数, 称$q$为其负惯性指数, 称$p-q$为其符号差.
+\end{definition}
+
+\begin{inference}
+    实数域上对称阵的正负惯性指数, 分别等于其正负特征值的个数(重根按重数计).
+\end{inference}
+
+\begin{inference}
+    实数域上的对称阵按照合同关系分类, 可以分为$\frac{(n+1)(n+2)}{2}$种.
+\end{inference}
+
+\section{ 正定阵 }
+
+\begin{definition}[正定阵]
+    实数域上, 若二次型$X'AX$恒有$X'AX\ge 0,\ X'AX=0\leftrightarrow X=0$, 则称$X'AX$为正定二次型, 称$A$为正定阵.
+\end{definition}
+
+\begin{example}
+    实数域上的$b_1{x_1}^2+\cdots+b_n{x_n}^2$是正定二次型, 当且仅当其所有不定元的系数都大于零.
+\end{example}
+
+\begin{inference}
+    $A\in M_n(\mathbb{R})$:
+    \begin{enumerate}[itemindent=1em]
+        \item $A$是正定阵, 当且仅当其正惯性系数为$n$.
+        \item $A$是正定阵, 当且仅当其特征值全为正数.
+        \item $A$是正定阵, 当且仅当其合同于单位阵.
+        \item $A$是正定阵, 当且仅当存在实数域上可逆的$C$使得$A=C'C$.
+    \end{enumerate}
+\end{inference}
+
+\begin{example}
+    $A$是正定阵, 当且仅当存在唯一的正定阵$B$使得$A=B^2$.
+\end{example}
+
+\begin{property}
+    \par
+    \begin{enumerate}[itemindent=1em]
+        \item 等价的两二次型, 若其中一个是正定二次型, 则另一个也是正定二次型.
+        \item 若两个矩阵是正定阵, 则其和也是正定阵.
+        \item 若两个矩阵是正定阵, 则其乘积是正定阵当且仅当其可交换.
+        \item 若一个矩阵正定, 则其行列式大于零.
+        \item 若两个矩阵正定, 则其组合成的准对角阵正定.
+    \end{enumerate}
+\end{property}
+
+\begin{theorem}[正定阵的充要条件]
+    实数域上的对称阵$A$是正定阵, 当且仅当, 对$1\le i \le n$, 有$\Delta k=\amatrix{a}{k}{k},\ det(\Delta k)>0$, 称$\Delta k$为$A$的顺序主子式.
+\end{theorem}
+
+\begin{theorem}[正定阵的充要条件]
+    一个矩阵是正定阵, 当且仅当其是欧氏空间某内积的度量阵.
+\end{theorem}
